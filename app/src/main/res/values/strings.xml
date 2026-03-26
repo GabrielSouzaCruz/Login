@@ -2,4 +2,6 @@
     <string name="app_name">Login</string>
     <string name="usuario">Usuário</string>
     <string name="user_name_text_placeholder">Digite seu Nome</string>
+    <string name="pw_senha_text_placeholder">Digite sua Senha</string>
+    <string name="user_pw_text">Senha</string>
 </resources>
