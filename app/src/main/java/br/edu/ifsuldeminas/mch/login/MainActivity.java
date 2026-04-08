@@ -1,5 +1,6 @@
 package br.edu.ifsuldeminas.mch.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,12 +30,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         buttonLogin = findViewById(R.id.buttonLoginId);
         buttonRegister = findViewById(R.id.buttonRegisterId);
         buttonForgotPW = findViewById(R.id.buttonForgotPWId);
-        editTextUser = findViewById(R.id.textInputLayoutUserId);
-        editTextPW = findViewById(R.id.textInputLayoutPWId);
+        editTextUser = findViewById(R.id.textInputEditLayoutUserId);
+        editTextPW = findViewById(R.id.textInputEditLayoutPWId);
 
 
         //interno
@@ -43,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 String userPW = editTextPW.getText().toString();
 
                 if (USER_NAME.equals(userName) && PW.equals(userPW)){
+                    Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
+                    welcomeIntent.putExtra("user_name", userName);
+                    startActivity(welcomeIntent);
 
                 }else {
                     Toast toast = Toast.makeText(getBaseContext(), userName + " - " + userPW, Toast.LENGTH_LONG);
