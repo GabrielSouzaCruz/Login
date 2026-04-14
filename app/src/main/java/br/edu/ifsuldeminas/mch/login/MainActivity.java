@@ -1,5 +1,6 @@
 package br.edu.ifsuldeminas.mch.login;
 
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonForgotPW;
     private EditText editTextUser;
     private EditText editTextPW;
+    private ActivityResultLauncher<String> startWelcomeActLaucher = registerForActivityResult(new SimpleContract(),
+            new ActivityResultCallback<String>() {
+        @Override
+        public void onActivityResult(String result) {
+            if (result == null || result.isBlank())
+                return;
+            Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 String userPW = editTextPW.getText().toString();
 
                 if (USER_NAME.equals(userName) && PW.equals(userPW)){
-                    Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
-                    welcomeIntent.putExtra("user_name", userName);
-                    startActivity(welcomeIntent);
+
 
                 }else {
                     Toast toast = Toast.makeText(getBaseContext(), userName + " - " + userPW, Toast.LENGTH_LONG);

@@ -26,6 +26,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private Button buttonTakePicture;
     private ImageView imageViewPicture;
+    private Intent resultIntent;
+    private static final String RESULTKEY = "resultado";
     private static final int REQUEST_PICTURE_CODE = 1234;
 
     @Override
@@ -53,6 +55,10 @@ public class WelcomeActivity extends AppCompatActivity {
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(takePictureIntent, REQUEST_PICTURE_CODE);
         });
+
+        resultIntent = new Intent();
+        resultIntent.putExtra(RESULTKEY,"Não Bateu a foto");
+        setResult(WelcomeActivity.RESULT_OK, resultIntent);
     }
 
     @Override
@@ -70,6 +76,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 if (extras != null) {
                     Bitmap image = (Bitmap) extras.get("data");
                     imageViewPicture.setImageBitmap(image);
+                    resultIntent.putExtra(RESULTKEY, "Bateu a foto");
                 }
             }
         }
