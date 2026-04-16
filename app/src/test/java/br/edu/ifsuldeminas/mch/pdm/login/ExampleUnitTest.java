@@ -1,4 +1,4 @@
-package br.edu.ifsuldeminas.mch.login;
+package br.edu.ifsuldeminas.mch.pdm.login;
 
 import org.junit.Test;
 

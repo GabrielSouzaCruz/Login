@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="br.edu.ifsuldeminas.mch.pdm.login.MainActivity">
 
     <TextView
         android:id="@+id/textViewUserId"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_left"
         android:layout_marginTop="@dimen/margin_top"
-        android:text="@string/usuario"
+        android:text="@string/user_name_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,12 +29,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUserId">
 
-
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditLayoutUserId"
+            android:id="@+id/textInputEditTextUserId"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:hint="@string/user_name_text_placeholder" />
+            android:layout_height="wrap_content"
+            android:hint="@string/user_name_text_placeholder"
+            tools:layout_editor_absoluteX="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -47,23 +48,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUserId" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPWId"
+        android:id="@+id/textInputLayoutPwId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPWId"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/margin_left"
         android:layout_marginTop="@dimen/margin_top"
         android:layout_marginEnd="@dimen/margin_right"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPWId"
         app:endIconMode="password_toggle">
 
-
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditLayoutPWId"
+            android:id="@+id/textInputEditTextPwId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/pw_senha_text_placeholder"
+            android:hint="@string/user_pw_text_placeholder"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,17 +71,15 @@
         android:id="@+id/buttonLoginId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="@string/button_login"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPwId"
         android:layout_marginStart="@dimen/margin_left"
         android:layout_marginTop="@dimen/margin_top"
         android:layout_marginEnd="@dimen/margin_right"
-        android:text="@string/button_login"
-        android:textAllCaps="true"
-        android:backgroundTint="@color/primary"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPWId" />
+        android:textAllCaps="true"/>
 
     <Button
         android:id="@+id/buttonRegisterId"
@@ -100,13 +98,12 @@
         android:id="@+id/buttonForgotPWId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginEnd="@dimen/margin_right"
-        android:backgroundTint="@color/white"
         android:text="@string/button_forgot_pw"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/buttonRegisterId"
         app:layout_constraintTop_toBottomOf="@+id/buttonLoginId"
-        android:textAllCaps="true"/>
-
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginEnd="@dimen/margin_right"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:textAllCaps="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package br.edu.ifsuldeminas.mch.login;
+package br.edu.ifsuldeminas.mch.pdm.login;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("br.edu.ifsuldeminas.mch.login", appContext.getPackageName());
+        assertEquals("br.edu.ifsuldeminas.mch.pdm.login", appContext.getPackageName());
     }
 }
